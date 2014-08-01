@@ -33,6 +33,8 @@ RSpec.describe Skill do
         expect(skill.errors).to be_nil
       end
       it "should save the record accurately" do
+
+  puts training_path.id
         actual = Environment.database.execute("SELECT name, description, training_path_id FROM skills")
         expected = [[ "Shuffling", "Like running with your feet on the ground", training_path.id ]]
         expect(actual).to eq expected
@@ -79,7 +81,7 @@ RSpec.describe Skill do
         expect(Skill.last.id).to eq skill2.id
       end
       it "should return the record that was created last, populated with training_path_id" do
-        expect(Skill.last.id).to eq training_path_id
+        expect(Skill.last.training_path_id).to eq training_path.id
       end
     end
   end
