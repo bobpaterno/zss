@@ -35,14 +35,19 @@ def print_menu
   end
 end
 
+def add_training_path
+  puts "What training path do you want to add?"
+  name = (gets || "").chomp
+  training_path = TrainingPath.create(name: name)
+  if training_path.new_record?
+    puts training_path.errors
+  else
+    puts "#{name} has been added to the list of training paths"
+  end
+end
+
 puts zombie
 print_menu
+
 command = gets
-puts "What training path do you want to add?"
-name = (gets || "").chomp
-training_path = TrainingPath.create(name: name)
-if training_path.new_record?
-  puts training_path.errors
-else
-  puts "#{name} has been added to the list of training paths"
-end
+add_training_path

@@ -1,4 +1,7 @@
 RSpec.describe "Adding skills to a training path" do
+  before do
+    skip
+  end
   context "valid input" do
     let!(:training_path1){ TrainingPath.create(name: "Weapon Skills") }
     let!(:training_path2){ TrainingPath.create(name: "Running") }
